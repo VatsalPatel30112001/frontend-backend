@@ -13,7 +13,7 @@ app.use(express.urlencoded({
 app.use(express.json());
 const schema = mongoose.Schema({
   name: { type: String, required: true },
-  phone: { type: String, required: true },
+  phone: { type: Number, required: true ,min:10},
   email: { type: String, required: true },
 });
 app.use(cors());
