@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const bodyparser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -8,8 +7,10 @@ mongoose.connect(process.env.URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-app.use(express.urlencoded());
-app.use(bodyparser.json());
+app.use(express.urlencoded({
+  extended:false
+}));
+app.use(express.json());
 const schema = mongoose.Schema({
   name: { type: String, required: true },
   phone: { type: String, required: true },
